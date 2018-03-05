@@ -12,41 +12,42 @@ body{
 	background-repeat: no-repeat;
 }
 
-.first-part{
+.color-divs{
 	height:20vh;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
 	align-items: center;
 	padding: 1vh;
-}
-.first-part__div1{
-	background-color:spin(@color-red,30%) ;
-	height: 90%;
-	width: 300px;
-	margin-bottom: 10px;
-	border: 2px solid blue;
-	
-}
 
-.first-part__div2{
-	background-color: lighten(@color-blue,30%);
+	&__div1{
+		background-color:spin(@color-red,30%) ;
 		height: 90%;
-	width: 300px;
-	margin-bottom: 10px;
-	border: 2px solid blue;
-	
-}
+		width: 300px;
+		margin-bottom: 10px;
+		border: 2px solid blue;
 
-.first-part__div3{
-	background-color: mix(@color-green,@color-blue,80%);
+	}
+
+	&__div2{
+		background-color: lighten(@color-blue,30%);
 		height: 90%;
-	width: 300px;
-	margin-bottom: 10px;
-	border: 2px solid blue;
+		width: 300px;
+		margin-bottom: 10px;
+		border: 2px solid blue;
+
+	}
+
+	&__div3{
+		background-color: mix(@color-green,@color-blue,80%);
+		height: 90%;
+		width: 300px;
+		margin-bottom: 10px;
+		border: 2px solid blue;
+	}
 }
 
-.second-part{
+.text-divs{
 	height:50vh;
 	display: flex;
 	flex-direction: column;
@@ -66,42 +67,24 @@ body{
 }
 
 .first-row__div1{
-	width: 30%;
-	height: 90%;
-	.text(red,left,overline,lowercase,2,"Georgia",10pt);
-	border: 1px solid blue;
+	.text(@color-red,@text-align-left,@text-decoration-overline,@text-transform-lowercase,@line-height-2,@font-family-Georgia,@font-size-10pt);
 }
 
 .first-row__div2{
-	width: 30%;
-	height: 90%;
-	.text(blue,right,line-through,uppercase,1,"Times New Roman",18pt);
-	border: 1px solid blue;
+	.text(@color-blue,@text-align-right,@text-decoration-line-through,@text-transform-uppercase,@line-height-1,@font-family-Times,@font-size-18pt);
 }
 .first-row__div3{
-	width: 30%;
-	height: 90%;
-	.text(green,center,underline,capitalize,2,"Arial",120%);
-	border: 1px solid blue;
-}
+	.text(@color-green,@text-align-center,@text-decoration-underline,@text-transform-capitalize,@line-height-2,@font-family-Arial,@font-size-120pr);
+	}
 .second-row__div4{
-	width: 30%;
-	height: 90%;
-	.text(darken(yellow,20%),right,line-through,uppercase,2,"Verdana",60%);
-	border: 1px solid blue;
-}
+	.text(darken(@color-yellow,20%),@text-align-right,@text-decoration-line-through,@text-transform-uppercase,@line-height-2,@font-family-Verdana,@font-size-60pr);
+	}
 .second-row__div5{
-	width: 30%;
-	height: 90%;
-	.text(black,center,overline,capitalize,2,"Courier New",80%);
-	border: 1px solid blue;
-}
+	.text(@color-black,@text-align-center,@text-decoration-overline,@text-transform-capitalize,@line-height-2,@font-family-Courie,@font-size-80pr);
+	}
 .second-row__div6{
-	width: 30%;
-	height: 90%;
-	.text(orange,left,underline,lowercase,1,"Lucida Console",50%);
-	border: 1px solid blue;
-}
+	.text(@color-orange,@text-align-left,@text-decoration-underline,@text-transform-lowercase,@line-height-1,@font-family-Lucida,@font-size-50pr);
+	}
 
 .tooltip {
 	border-bottom: 1px dotted #0077AA;
@@ -119,10 +102,27 @@ body{
 	padding: 3px 7px;
 	position: absolute;
 	visibility: hidden; 
-			
+
 }
-		
+
 .tooltip:hover::after {
 	opacity: 1; 
 	visibility: visible;
+}
+
+/////////////////////////////////
+/////////mixin///////////////////
+
+.text(@color,@text-align,@text-decoration,@text-transform,@line-height,@font-family,@font-size)
+{
+	width: 30%;
+	height: 90%;
+	border: 1px solid blue;
+	color: @color;
+	text-align: @text-align;
+	text-decoration: @text-decoration;
+	text-transform: @text-transform;
+	line-height: @line-height;
+	font-family: @font-family;
+	font-size: @font-size;
 }
